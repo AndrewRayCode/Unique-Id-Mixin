@@ -13,33 +13,37 @@ Install
 Example Usage
 -------------
 
-    var UniqeIdMixin = require('unique-id-mixin');
-    
-    var Component = React.createClass({
+```js
+var UniqeIdMixin = require('unique-id-mixin');
 
-        mixins: [ UniqeIdMixin ],
+var Component = React.createClass({
+    mixins: [ UniqeIdMixin ],
 
-        render: function() {
-
-            <label htmlFor={ this.getNextUid( 'unique-string' ) }>Label</label>
-            <input id={ this.getNextUid( 'unique-string' ) } type="text" />
-
-        }
-
-    });
+    render: function() {
+        return (
+            <div>
+                <label htmlFor={ this.getNextUid( 'unique-string' ) }>Label</label>
+                <input id={ this.getNextUid( 'unique-string' ) } type="text" />
+            </div>
+        );
+    }
+});
+```
 
 The above can be a bit verbose to type, and has the problem that you need to
 duplicate the string between each HTML element. There is also a convenience
 method that will generate UIDs every *other* call. The first two calls will
 return the same UID, then the next two calls will return a new UID, etc.
 
-    <!-- Both function calls return the same UID -->
-    <label htmlFor={ this.getNextHtmlFor() }>Label</label>
-    <input id={ this.getNextHtmlFor() } type="text" />
+```xml
+<!-- Both function calls return the same UID -->
+<label htmlFor={ this.getNextHtmlFor() }>Label</label>
+<input id={ this.getNextHtmlFor() } type="text" />
 
-    <!-- Both calls now return the same UID, but different than above -->
-    <label htmlFor={ this.getNextHtmlFor() }>Label</label>
-    <input id={ this.getNextHtmlFor() } type="text" />
+<!-- Both calls now return the same UID, but different than above -->
+<label htmlFor={ this.getNextHtmlFor() }>Label</label>
+<input id={ this.getNextHtmlFor() } type="text" />
+```
 
 API
 ---
